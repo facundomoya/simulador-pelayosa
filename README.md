@@ -120,7 +120,7 @@ The simulator is functional and ready for use.
 This project is available online free of charge.
 You can access the simulator at the following link:
 
-[Phenological Stage Simulator - Pelayo S.A.](https://simulador-pelayosa.netlify.app/)
+[Phenological Stage Simulator - Pelayo S.A.](https://pelayosa-simulator.netlify.app/)
 
 ## Development Team
 
@@ -145,4 +145,4 @@ Follow these steps to clone the project to your local machine:
 2. Run the following command to clone the repository:
 
 ```bash
-git clone https://github.com/facundomoya/simulador-pelayosa.git
+git clone https://github.com/facundomoya/pelayosa-simulator.git
