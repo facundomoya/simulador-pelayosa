@@ -124,7 +124,7 @@ You can access the simulator at the following link:
 
 ## Development Team
 
-This project was developed by Facundo Moya, a student of **Information Systems Engineering** at the **National Technological University – Tucumán Regional Faculty (UTN-FRT)** for the **Simulation** course, in collaboration with **Pelayo S.A.**
+This project was developed by Facundo Moya, a student of **Ingeniería en Sistemas de Información** at **Universidad Tecnológica Nacional – Facultad Regional Tucumán (UTN-FRT)**, for the **Simulation** course, in collaboration with **Pelayo S.A**.
 
 ## Code Management
 
