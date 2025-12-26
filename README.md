@@ -1,148 +1,148 @@
-# Simulador de Etapas Fenológicas para Pelayo S.A.
+# Phenological Stage Simulator for Pelayo S.A.
 
-## Descripción del Proyecto
+## Project Description
 
-Este simulador web permite **modelar y visualizar las etapas fenológicas del cultivo de la soja**, específicamente diseñado para **Pelayo S.A.** La herramienta calcula los días correspondientes a cada etapa fenológica (desde **VN** hasta **R8**), considerando variables climáticas generadas aleatoriamente mediante técnicas de simulación estocástica.
+This web simulator allows you to **model and visualize the phenological stages of soybean**, specifically designed for **Pelayo S.A.** The tool calculates the days corresponding to each phenological stage (from **VN** to **R8**), considering climate variables generated randomly using stochastic simulation techniques.
 
-## Características Principales
+## Main Features
 
-- **Generación de números aleatorios**:  
-  Utiliza el método **congruencial mixto** para obtener variables pseudoaleatorias.
+- **Random number generation**:  
+  Uses the **mixed congruential** method to obtain pseudo-random variables.
 
-- **Distribuciones estadísticas utilizadas**:
-  - **Normal** → para simular **temperatura diaria**
-  - **Uniforme** → para simular **velocidad del viento**
+- **Statistical distributions used**:
+  - **Normal** → to simulate **daily temperature**
+  - **Uniform** → to simulate **wind speed**
 
-- **Variables simuladas**:
-  - Temperatura diaria (°C)
-  - GDD (Grados Día de Crecimiento) diario y acumulado
-  - Velocidad del viento (km/h)
-  - Días de lluvia (🌧️)
-  - Etapas fenológicas (VN, R1 a R8)
-  - Días de monitoreo (👁️)
+- **Simulated variables**:
+  - Daily temperature (°C)
+  - GDD (Growing Degree Days) daily and accumulated
+  - Wind speed (km/h)
+  - Rainy days (🌧️)
+  - Phenological stages (VN, R1 to R8)
+  - Monitoring days (👁️)
 
-## Tecnologías Utilizadas
+## Technologies Used
 
 - HTML5 + CSS3
 - JavaScript
 - Bootstrap 5.3
 - SweetAlert2
 
-## Instrucciones de Uso
+## How to Use
 
-### 1. Selección de fecha inicial
-- Navegá por los meses (Diciembre a Abril) usando los botones `"<"` y `">"`
-- Hacé clic en el día que desees como **inicio de la simulación**
+### 1. Select the start date
+- Navigate through the months (December to April) using the `"<"` and `">"` buttons
+- Click the day you want as the **start of the simulation**
 
-### 2. Ejecución de la simulación
-- Presioná el botón **"Simular"**
-- El sistema calculará automáticamente todas las variables día por día
+### 2. Run the simulation
+- Press the **"Simulate"** button
+- The system will automatically calculate all variables day by day
 
-### 3. Visualización de resultados
-- Cada día se colorea según la etapa fenológica alcanzada
-- Aparecen íconos:
-  - 🌧️ para días de **lluvia**
-  - 👁️ para días de **monitoreo**
-- Al hacer clic en un día, se muestran sus datos en el **panel lateral**
+### 3. View results
+- Each day is colored according to the phenological stage reached
+- Icons appear:
+  - 🌧️ for **rainy** days
+  - 👁️ for **monitoring** days
+- When you click on a day, its data is shown in the **side panel**
 
-### 4. Reinicio
-- Usá el botón **"Reiniciar"** para comenzar una nueva simulación
+### 4. Reset
+- Use the **"Reset"** button to start a new simulation
 
-## Fundamento Matemático
+## Mathematical Foundation
 
-### Generación de números aleatorios
-Se implementa un **Generador Congruencial Mixto** con la fórmula:
+### Random number generation
+A **Mixed Congruential Generator** is implemented with the formula:
 
 Xₙ₊₁ = (a · Xₙ + c) mod m
 
-Donde:
-- `X₀` es la semilla inicial
-- `a`, `c`, `m` son constantes enteras
+Where:
+- `X₀` is the initial seed
+- `a`, `c`, `m` are integer constants
 
-Este generador se usa para:
-- Generar variables uniformes 0≤u≤1 
-- Mezclar días del mes
-- Asignar lluvia y viento diarios
+This generator is used to:
+- Generate uniform variables 0 ≤ u ≤ 1 
+- Randomize month days
+- Assign daily rain and wind
 
-### Distribuciones utilizadas
+### Distributions used
 
-#### Distribución Normal (Temperatura diaria)
-Se usa una distribución normal acotada:
+#### Normal Distribution (Daily temperature)
+A truncated normal distribution is used:
 
-temp = max(min(N(μ, σ), μ + σ), μ - σ)
+temp = max(min(N(μ, σ), μ + σ), μ − σ)
 
-Donde:
-- `μ`: media mensual
-- `σ`: desviación estándar mensual
+Where:
+- `μ`: monthly mean
+- `σ`: monthly standard deviation
 
-#### Distribución Uniforme (Viento diario)
-El viento se genera como:
+#### Uniform Distribution (Daily wind)
+Wind is generated as:
 
-viento = a + (b - a) · u
+wind = a + (b − a) · u
 
-Donde `a` y `b` son valores límites mensuales.
+Where `a` and `b` are monthly limit values.
 
-### Cálculo del GDD (Grado Día de Crecimiento)
+### GDD (Growing Degree Days) calculation
 
-GDD = temperatura_diaria - 10°C
+GDD = daily_temperature − 10°C
 
-### Etapas Fenológicas del Cultivo
+### Crop Phenological Stages
 
-Las etapas se determinan según el **GDD acumulado**:
+The stages are determined according to **accumulated GDD**:
 
-| Etapa | Rango GDD acumulado |
-|-------|----------------------|
-| VN    | 0 – 500              |
-| R1    | 501 – 600            |
-| R2    | 601 – 750            |
-| R3    | 751 – 900            |
-| R4    | 901 – 1050           |
-| R5    | 1051 – 1250          |
-| R6    | 1251 – 1400          |
-| R7    | 1401 – 1500          |
-| R8    | > 1500               |
+| Stage | Accumulated GDD range |
+|-------|------------------------|
+| VN    | 0 – 500                |
+| R1    | 501 – 600              |
+| R2    | 601 – 750              |
+| R3    | 751 – 900              |
+| R4    | 901 – 1050             |
+| R5    | 1051 – 1250            |
+| R6    | 1251 – 1400            |
+| R7    | 1401 – 1500            |
+| R8    | > 1500                 |
 
-## Estado del proyecto
-Completado ✔️
+## Project Status
+Completed ✔️
 
-El simulador está funcional y listo para su uso.
+The simulator is functional and ready for use.
 
-## Descripción de archivos:
-- **css/style.css**: Estilos personalizados para la aplicación
-- **js/scripts.js**: Lógica principal del simulador
-- **js/calculadorIndex.js**: Animaciones para la página de inicio
-- **public/favicon.png**: Icono de la aplicación
-- **public/video.mp4**: Video de fondo para la página principal
-- **index.html**: Landing page de presentación
-- **simulador.html**: Aplicación del simulador principal
+## File Description
+- **css/style.css**: Custom styles for the application
+- **js/scripts.js**: Main simulator logic
+- **js/calculadorIndex.js**: Animations for the home page
+- **public/favicon.png**: Application icon
+- **public/video.mp4**: Background video for the main page
+- **index.html**: Presentation landing page
+- **simulador.html**: Main simulator application
  
-## Acceso al simulador
-Este proyecto está disponible en línea de forma gratuita.
-Podés acceder al simulador desde el siguiente enlace:
+## Access to the simulator
+This project is available online free of charge.
+You can access the simulator at the following link:
 
-[Simulador de etapas fenológicas - Pelayo S.A](https://simulador-pelayosa.netlify.app/)
+[Phenological Stage Simulator - Pelayo S.A.](https://simulador-pelayosa.netlify.app/)
 
-## Equipo de Desarrollo
+## Development Team
 
-Este proyecto fue desarrollado por Facundo Moya estudiante de **Ingeniería en Sistemas de Información** de la **Universidad Tecnológica Nacional - Facultad Regional Tucumán (UTN-FRT)** para la materia **Simulación**, en colaboración con **Pelayo S.A.**
+This project was developed by Facundo Moya, a student of **Information Systems Engineering** at the **National Technological University – Tucumán Regional Faculty (UTN-FRT)** for the **Simulation** course, in collaboration with **Pelayo S.A.**
 
-## Gestión del Código
+## Code Management
 
-El desarrollo del proyecto se realizó utilizando un flujo de trabajo simple con Git, donde:
+The project was developed using a simple Git workflow, where:
 
-- **Única rama activa**: `master` (ahora llamada `main` en muchos repositorios)
+- **Single active branch**: `master` (now called `main` in many repositories)
 
-## Compatibilidad y diseño
+## Compatibility and Design
 
-Este simulador está diseñado para ser responsive y puede utilizarse en distintos dispositivos. No obstante, su visualización y funcionamiento son óptimos en pantallas grandes, donde se muestra el calendario y los paneles informativos con mayor claridad.
+This simulator is designed to be responsive and can be used on different devices. However, its display and operation are optimal on large screens, where the calendar and information panels are shown more clearly.
 
-## Cómo clonar el repositorio
+## How to clone the repository
 
-Sigue estos pasos para clonar el proyecto en tu máquina local:
+Follow these steps to clone the project to your local machine:
 
-1. Abre una terminal o consola de comandos.
+1. Open a terminal or command prompt.
 
-2. Ejecuta el siguiente comando para clonar el repositorio:
+2. Run the following command to clone the repository:
 
 ```bash
 git clone https://github.com/facundomoya/simulador-pelayosa.git
